@@ -1,5 +1,58 @@
-# Video-Clipper
-======Compile======
+Video Event Clipping System
+
+Overview
+========
+This project implements a simple real-time video event clipping system in C++ using shared memory, sockets, multithreading, and OpenCV.
+The system contains four applications:
+1.Video Processor
+  Reads frames from a video file
+  Shares frames through shared memory
+  Maintains source FPS timing
+2.Video Clipper
+  Reads frames from shared memory
+  Maintains a circular buffer for the previous 9 seconds
+  Receives event notifications over socket
+  Generates a 15-second clip:
+  9 seconds before event
+  6 seconds after event
+  Saves clip as .mp4
+3.Event Notifier
+  User interactive application
+  Sends event notification when user presses e
+4.CPU Watcher
+  Monitors system memory usage
+  Monitors Video Clipper process usage
+
+Requirements
+============
+•Linux
+•C++17
+•OpenCV
+•CMake
+•POSIX shared memory
+
+Design Highlights
+==================
+•Shared memory based IPC
+•Mutex protected shared memory synchronization
+•Circular frame buffer using deque
+•Multi-threaded event processing
+•Graceful shutdown using SIGINT
+
+References
+===========
+•LearnOpenCV - Reading and Writing Videos using OpenCV
+•OpenCV Official Documentation
+•ChatGPT
+
+Notes
+=======
+•Sometimes process synchronization may fail and generate unusually large output files.
+•CPU usage printing is incomplete due to time limitations.
+•Shared memory synchronization uses pthread_mutex.
+
+Compile
+========
 
 mkdir build
 cd build
@@ -10,7 +63,8 @@ make
 cd -
 
 
-=====Run===========
+Run
+===
 
 Open four terminals and execute:
 
