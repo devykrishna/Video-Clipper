@@ -1,0 +1,8 @@
+build/
+*.o
+*.out
+*.mp4
+video_clipper
+video_processor
+event_notifier
+cpu_watcher
