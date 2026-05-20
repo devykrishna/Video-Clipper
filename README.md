@@ -1,4 +1,5 @@
 Video Event Clipping System
+===========================
 
 Overview
 ========
@@ -85,7 +86,8 @@ Press e + ENTER
 Each event generates an independent video clip.
 
 
-=======Output=====
+Output
+======
 
 Generated clips are saved as:
 
